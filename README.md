@@ -1,2 +1,1 @@
-# mindOSINT
-mindOSINT – Framework OSINT para análise de senhas, IPs e hashes. Consulta senhas vazadas (Pwned Passwords), reputação de IPs (Shodan/AbuseIPDB) e análise de hashes (VirusTotal). Gera relatórios em PDF, TXT, JSON ou CSV.
+mindOSINT – Advanced OSINT framework for comprehensive cybersecurity intelligence. Performs secure password exposure checks (Pwned Passwords), IP reputation analysis (Shodan, AbuseIPDB), and malware/hash investigations (VirusTotal). Generates structured reports in PDF, TXT, JSON, and CSV for analysis, auditing, and threat intelligence.
