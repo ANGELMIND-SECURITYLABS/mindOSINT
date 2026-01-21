@@ -11,36 +11,56 @@ python3 mindOSINT.py --help
 <img width="792" height="324" alt="image" src="https://github.com/user-attachments/assets/a9c3d8cd-5229-409f-84f9-cc44e188c6bc" />
 
 
-Required:
-requirements.txt
+# Required:
+requirements.txt:
+requests
+shodan
+reportlab
+
+
+<img width="195" height="99" alt="image" src="https://github.com/user-attachments/assets/21d0d2be-4ec9-412d-b652-101ea5334bf0" />
+
 
 
 
 # Verificar senha vazada
-python3 mindOSINT.py --password "Senha@123"
+
+  python3 mindOSINT.py --password "Senha@123"
 
 # Consultar IP / IP Analysis
-python3 mindOSINT.py --ip 8.8.8.8
+
+  python3 mindOSINT.py --ip 8.8.8.8
+  <img width="805" height="862" alt="image" src="https://github.com/user-attachments/assets/8458fdca-2038-4228-982b-70c487455e36" />
+
+
+
 
 # Consultar hash / Hash reputation
-python3 mindOSINT.py --hash <SHA256>
+  python3 mindOSINT.py --hash <md5, sha1,sha256>
+  python3 mindOSINT.py --hash 5bef35496fcbdbe841c82f4d1ab8b7c2
+  <img width="821" height="608" alt="image" src="https://github.com/user-attachments/assets/18edadbe-c2ba-42d8-aef0-e1d45b8063a5" />
+
 
 #Gerar relatório / Generate Report
-python3 mindOSINT.py --ip 8.8.8.8 --report pdf
-python3 mindOSINT.py --ip 8.8.8.8 --report csv
-python3 mindOSINT.py --ip 8.8.8.8 --report jsom
-python3 mindOSINT.py --ip 8.8.8.8 --report txt
-python3 mindOSINT.py --ip 8.8.8.8 --report all
+
+  python3 mindOSINT.py --ip 8.8.8.8 --report pdf
+  python3 mindOSINT.py --ip 8.8.8.8 --report csv
+  python3 mindOSINT.py --ip 8.8.8.8 --report jsom
+  python3 mindOSINT.py --ip 8.8.8.8 --report txt
+  python3 mindOSINT.py --ip 8.8.8.8 --report all
+  <img width="442" height="251" alt="image" src="https://github.com/user-attachments/assets/51aeb39d-582f-4fda-8381-875198c2be26" />
+
+  
 
 #Relatórios / results reports
 
-Os relatórios são salvos automaticamente em: // Reports are automatically saved to:
+  Os relatórios são salvos automaticamente em: // Reports are automatically saved to:
 
 reports/
 
-#Opcional 
-Install dependencies
+  #Opcional 
+  Install dependencies
 
-After downloading, the user can install the dependencies with:
+  After downloading, the user can install the dependencies with:
 
-pip install -r requirements.txt
+  pip install -r requirements.txt
