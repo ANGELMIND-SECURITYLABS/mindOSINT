@@ -15,6 +15,8 @@ Creator: "Geovane Baptista - AngelMind Security"
 
 
   *cd mindOSINT*
+
+
    <img width="269" height="36" alt="image" src="https://github.com/user-attachments/assets/df229255-6966-4506-b4b4-cf89add57f94" />
 
 
