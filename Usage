@@ -1,0 +1,24 @@
+# Ajuda / Help
+python3 mindOSINT.py --help
+
+# Verificar senha vazada
+python3 mindOSINT.py --password "Senha@123"
+
+# Consultar IP / IP Analysis
+python3 mindOSINT.py --ip 8.8.8.8
+
+# Consultar hash / Hash reputation
+python3 mindOSINT.py --hash <SHA256>
+
+#Gerar relatório / Generate Report
+python3 mindOSINT.py --ip 8.8.8.8 --report pdf
+python3 mindOSINT.py --ip 8.8.8.8 --report csv
+python3 mindOSINT.py --ip 8.8.8.8 --report jsom
+python3 mindOSINT.py --ip 8.8.8.8 --report txt
+python3 mindOSINT.py --ip 8.8.8.8 --report all
+
+#Relatórios / results reports
+
+Os relatórios são salvos automaticamente em: // Reports are automatically saved to:
+
+reports/
