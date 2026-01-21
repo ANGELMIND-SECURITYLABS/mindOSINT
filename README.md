@@ -7,11 +7,18 @@ Creator: "Geovane Baptista - AngelMind Security"
 
 
 * Download / Baixar via git clone:*
-  *No terminal : 
+  *No terminal :* 
   git clone https://github.com/ANGELMIND-SECURITYLABS/mindOSINT.git
 
+  <img width="607" height="156" alt="image" src="https://github.com/user-attachments/assets/6093905b-dcc3-4d3b-8bf6-13a9239dc846" />
 
-  cd mindOSINT
+
+
+  *cd mindOSINT*
+   <img width="269" height="36" alt="image" src="https://github.com/user-attachments/assets/df229255-6966-4506-b4b4-cf89add57f94" />
+
+
+
   python3 mindOSINT.py --ip 1.1.1
 
 
