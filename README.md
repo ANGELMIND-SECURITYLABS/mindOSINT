@@ -6,9 +6,11 @@ mindOSINT – Advanced OSINT framework for comprehensive cybersecurity intellige
 Creator: "Geovane Baptista - AngelMind Security"
 
 
-# Download / Baixar via git clone:
-#No terminal : 
+* Download / Baixar via git clone:*
+  *No terminal : 
   git clone https://github.com/ANGELMIND-SECURITYLABS/mindOSINT.git
+
+
   cd mindOSINT
   python3 mindOSINT.py --ip 1.1.1
 
