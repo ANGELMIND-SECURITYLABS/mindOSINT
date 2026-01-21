@@ -1,7 +1,15 @@
 <img width="1280" height="853" alt="image" src="https://github.com/user-attachments/assets/57b570eb-3759-456c-ad30-5a13cd8bd5ac" />
 
+
+
 mindOSINT – Advanced OSINT framework for comprehensive cybersecurity intelligence. Performs secure password exposure checks (Pwned Passwords), IP reputation analysis (Shodan, AbuseIPDB), and malware/hash investigations (VirusTotal). Generates structured reports in PDF, TXT, JSON, and CSV for analysis, auditing, and threat intelligence.
 Creator: "Geovane Baptista - AngelMind Security"
+
+
+Download / Baixar via git clone:
+No terminal : https://github.com/ANGELMIND-SECURITYLABS/mindOSINT.git
+cd mindOSINT
+python3 mindOSINT.py --ip 1.1.1
 
 
 #Na primeira execução: 
