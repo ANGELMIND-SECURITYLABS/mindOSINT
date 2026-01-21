@@ -5,7 +5,9 @@ Creator: "Geovane Baptista - AngelMind Security"
 
 
 Na primeira execução: 
+
   <img width="447" height="192" alt="image" src="https://github.com/user-attachments/assets/670ff7ab-9c82-4709-bc85-6882129d35a8" />
+
 
 Passar as API´s / Enter API´s: virustotal, AbuseIPDB, Shodan
   <img width="533" height="243" alt="image" src="https://github.com/user-attachments/assets/876b4134-0f8a-4d8f-89c3-579b1e772182" />
