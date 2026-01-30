@@ -9,6 +9,7 @@ import json
 import time
 import requests
 import hashlib
+import getpass
 from datetime import datetime, UTC
 
 COPYRIGHT = "Criado Por Geovane Baptista - AngelMind Security"
@@ -50,7 +51,6 @@ def ensure_venv():
 
     os.execv(py, [py] + sys.argv)
 
-
 ensure_venv()
 
 # =========================================================
@@ -62,41 +62,37 @@ def parse_args():
         description=f"Framework OSINT – Senha, IP e Hash\n{COPYRIGHT}",
     )
 
-    p.add_argument("--password", help="Verifica se uma senha foi vazada (HIBP Pwned Passwords)")
+    p.add_argument("--password", help="Verifica se uma senha foi vazada (HIBP)")
     p.add_argument("--ip", help="Consulta IP (Shodan + AbuseIPDB)")
-    p.add_argument("--hash", help="Consulta hash no VirusTotal (MD5/SHA1/SHA256)")
+    p.add_argument("--hash", help="Consulta hash no VirusTotal")
     p.add_argument("--report", choices=["pdf", "txt", "json", "all"],
                    help="Gera relatório")
     return p.parse_args()
 
 # =========================================================
-# CONFIGURAÇÃO INICIAL
+# CONFIGURAÇÃO SEGURA (SEM API EM TEXTO PLANO)
 # =========================================================
 def load_config():
     cfg_file = "config.json"
 
     if os.path.exists(cfg_file):
         with open(cfg_file) as f:
-            return json.load(f)
+            cfg = json.load(f)
+    else:
+        print("[*] Configuração inicial obrigatória")
+        lang = input("Idioma (pt/en) [pt]: ") or "pt"
+        cfg = {"language": lang}
+        with open(cfg_file, "w") as f:
+            json.dump(cfg, f, indent=2)
 
-    print("[*] Configuração inicial obrigatória")
-    lang = input("Idioma (pt/en) [pt]: ") or "pt"
+    cfg["virustotal"] = os.getenv("VT_API_KEY") or getpass.getpass("VirusTotal API Key (oculto): ").strip()
+    cfg["abuseipdb"] = os.getenv("ABUSE_API_KEY") or getpass.getpass("AbuseIPDB API Key (oculto): ").strip()
+    cfg["shodan"] = os.getenv("SHODAN_API_KEY") or getpass.getpass("Shodan API Key (oculto): ").strip()
 
-    cfg = {
-        "language": lang,
-        "virustotal": input("VirusTotal API Key: ").strip(),
-        "abuseipdb": input("AbuseIPDB API Key: ").strip(),
-        "shodan": input("Shodan API Key: ").strip(),
-    }
-
-    with open(cfg_file, "w") as f:
-        json.dump(cfg, f, indent=2)
-
-    print(f"[+] Configuração salva - {COPYRIGHT}")
     return cfg
 
 # =========================================================
-# PWNED PASSWORDS (SEM API)
+# PWNED PASSWORDS
 # =========================================================
 def pwned_password(password):
     sha1 = hashlib.sha1(password.encode()).hexdigest().upper()
@@ -192,34 +188,6 @@ def show_terminal(results):
     print(json.dumps(results, indent=2))
     print("================================\n")
 
-def generate_report(results, rtype):
-    os.makedirs("reports", exist_ok=True)
-    base = f"reports/mindosint_{datetime.now(UTC).strftime('%Y%m%d_%H%M%S')}"
-
-    if rtype in ("json", "all"):
-        with open(base + ".json", "w") as f:
-            json.dump(results, f, indent=2)
-
-    if rtype in ("txt", "all"):
-        with open(base + ".txt", "w") as f:
-            f.write(f"{COPYRIGHT}\n\n")
-            f.write(json.dumps(results, indent=2))
-
-    if rtype in ("pdf", "all"):
-        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-        from reportlab.lib.styles import getSampleStyleSheet
-
-        pdf = SimpleDocTemplate(base + ".pdf")
-        styles = getSampleStyleSheet()
-        story = [
-            Paragraph(COPYRIGHT, styles["Normal"]),
-            Spacer(1, 12),
-            Paragraph(json.dumps(results, indent=2), styles["Normal"])
-        ]
-        pdf.build(story)
-
-    print(f"[+] Relatório gerado em reports/ - {COPYRIGHT}")
-
 # =========================================================
 # MAIN
 # =========================================================
@@ -233,11 +201,7 @@ def main():
 
     cfg = load_config()
     results = run_osint(args, cfg)
-
-    if args.report:
-        generate_report(results, args.report)
-    else:
-        show_terminal(results)
+    show_terminal(results)
 
 if __name__ == "__main__":
     main()
